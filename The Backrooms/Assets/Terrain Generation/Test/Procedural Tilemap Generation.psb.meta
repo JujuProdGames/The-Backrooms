@@ -102,7 +102,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 16
-    spriteID: 82bf3d77bf5adcd40939644e22579362
+    spriteID: 4e71cbcd6ceafaf48bf22a9870f42ff8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -284,7 +284,7 @@ ScriptedImporter:
     spriteName: Hall
     isGroup: 0
     parentIndex: -1
-    spriteID: 82bf3d77bf5adcd40939644e22579362
+    spriteID: 4e71cbcd6ceafaf48bf22a9870f42ff8
     layerID: 86
     mosaicPosition: {x: 4, y: 4}
     flatten: 0

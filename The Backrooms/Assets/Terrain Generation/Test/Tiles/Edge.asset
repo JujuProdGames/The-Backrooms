@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Edge
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 2150203433442584832, guid: 8c503acc118f8bc48aa16edacbc165dc, type: 3}
+  connectTop: 0
+  connectRight: 1
+  connectBottom: 1
+  connectLeft: 1

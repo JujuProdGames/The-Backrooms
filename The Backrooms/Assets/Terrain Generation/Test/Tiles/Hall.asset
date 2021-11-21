@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Hall
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 7958399050802090588, guid: 0850e03b4c07f964cb0b2ab27f7f71d3, type: 3}
+  connectTop: 0
+  connectRight: 1
+  connectBottom: 0
+  connectLeft: 1

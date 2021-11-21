@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Corner
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 3314340755599267478, guid: 18e2dadd5be887348bd0a85387fec409, type: 3}
+  connectTop: 1
+  connectRight: 1
+  connectBottom: 0
+  connectLeft: 0
