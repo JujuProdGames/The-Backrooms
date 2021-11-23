@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileGenerator : MonoBehaviour
+public class TileGenerator : TileClass
 {
     [SerializeField] private List<TileData> tiles = new List<TileData>();
 
     void Start()
     {
         //Initial Spawn
-        SpawnTile(RandomTile(), new Vector3(0,0,0));
+        SpawnTile(RandomTile(tiles), new Vector3(0,0,0));
     }
 
     private void SpawnTile(TileData tileToBeSpawned, Vector3 position)//ADD POSITION
@@ -42,20 +42,9 @@ public class TileGenerator : MonoBehaviour
 		Transform connectPoint = connectTile.connectionPoints[Random.Range(0, connectTile.connectionPoints.Count)];
 
 		//3. Spawn Tile at Connection Position
-		SpawnTile(RandomTile(), connectPoint.position);
+		SpawnTile(RandomTile(tiles), connectPoint.position);
 
 		//4. Remove Illegal Connections (2 Points; 1 per Tile -=- Destroy Existing Point, Other Won't be Spawned In)
 		DestroyConnectionPoint(connectTile, connectPoint);
-	}
-
-	private static void DestroyConnectionPoint(WorldTile connectTile, Transform connectPoint)
-	{		
-		Destroy(connectPoint.gameObject);
-		connectTile.connectionPoints.Remove(connectPoint);
-	}
-
-	private TileData RandomTile()
-	{
-        return tiles [Random.Range(0, tiles.Count)];
-    }
+	}	
 }
