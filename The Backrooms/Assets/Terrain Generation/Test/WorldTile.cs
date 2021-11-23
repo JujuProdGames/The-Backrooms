@@ -12,20 +12,14 @@ public class WorldTile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		#region Rounding
-		transform.position = new Vector3(
-			Mathf.RoundToInt(transform.position.x),
-			Mathf.RoundToInt(transform.position.y),
-			Mathf.RoundToInt(transform.position.z)
-			);
-		#endregion
+		transform.position = RoundToIntVector3(transform.position);
 
 		CalculatePointPositions();		   
     }
 
 	private void CalculatePointPositions()
 	{		
-		for (int i = 0; i < 4; i++)//4 Connection Points per Tile (sorry no scalability!)
+		for (int i = 0; i < 4; i++)//Four Connection Points per Tile (sorry no scalability!)
 		{
 			Vector3 pointPos = new Vector3(0, 0);
 
@@ -77,13 +71,17 @@ public class WorldTile : MonoBehaviour
 	{
 		GameObject point = new GameObject(name);		
 		point.transform.parent = transform;
-		point.transform.localPosition = position;		
+		point.transform.localPosition = position;
+
+		point.transform.position = RoundToIntVector3(point.transform.position);
 
 		#region Check For Illegal Point
-		if (TileExistsInPosition(point.transform.position))
+		//Destroy Point if Tile or Connection Point already exists in that Position
+		if (Vector3ExistsInList(point.transform.position, TileManager.worldTilePositions) || Vector3ExistsInList(point.transform.position, TileManager.connectionPositions))
 		{
-			//Debug.Log("TILE DETECTED: " + point);
-			Destroy(point);
+			if(Vector3ExistsInList(point.transform.position, TileManager.connectionPositions))
+				Debug.Log("connection point already exists there bruv");
+			DestroyConnectionPoint(this, point.transform);
 			return;
 		}
 		#endregion
@@ -96,36 +94,34 @@ public class WorldTile : MonoBehaviour
 		transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, Random.Range(0, 4) * 90, transform.localEulerAngles.z);		
 	}
 
-	private bool TileExistsInPosition(Vector3 connectionPos)
+	#region Custom Methods
+	private static void DestroyConnectionPoint(WorldTile connectTile, Transform connectPoint)
 	{
-		#region Rounding
-		connectionPos = new Vector3(
-			Mathf.RoundToInt(connectionPos.x),
-			Mathf.RoundToInt(connectionPos.y),
-			Mathf.RoundToInt(connectionPos.z)
-			);
-		#endregion
+		Destroy(connectPoint.gameObject);
+		connectTile.connectionPoints.Remove(connectPoint);
+	}
 
-		//Debug.Log("Connection Pos: " + connectionPos);
-		//Debug.Log("# of Position Tiles: " + TileManager.worldTilePositions.Count);
-		//Debug.Log("First Tile Pos: " + TileManager.worldTilePositions[0]);
-		float tilePosX;
-		float tilePosY;
-		float tilePosZ;
+	private bool Vector3ExistsInList(Vector3 vector3, List<Vector3> list)
+	{
+		//I don't know why, I don't have to know why, but for some reason, when I round the vector3 it doesn't round it unless I put it here. Ok.
+		vector3 = RoundToIntVector3(vector3);
 
-		foreach (Vector3 tilePos in TileManager.worldTilePositions)
+		foreach (Vector3 vector3InList in list)
 		{
-			tilePosX = tilePos.x;
-			tilePosY = tilePos.y;
-			tilePosZ = tilePos.z;
-
-			//Debug.Log("Connection Pos: " + connectionPos.x + " " + connectionPos.y + " " + connectionPos.z);
-			//Debug.Log("Tile Pos: " + tilePosX + " " + tilePosY + " " + tilePosZ);
-
-			if (connectionPos.x == tilePosX && connectionPos.y == tilePosY && connectionPos.z == tilePosZ)
+			if (vector3.x == vector3InList.x && vector3.y == vector3InList.y && vector3.z == vector3InList.z)
 				return true;
 		}
 
 		return false;
 	}
+
+	private Vector3 RoundToIntVector3(Vector3 vectorToRound)
+	{
+		return new Vector3(
+			Mathf.RoundToInt(vectorToRound.x),
+			Mathf.RoundToInt(vectorToRound.y),
+			Mathf.RoundToInt(vectorToRound.z)
+			);
+	}
+	#endregion
 }

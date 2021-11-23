@@ -32,9 +32,34 @@ public class TileManager : MonoBehaviour
 		}		
 	}
 
-	[SerializeField] private List<Vector3> wtp = new List<Vector3>();
+	public static List<Vector3> connectionPositions
+	{		
+		get
+		{
+			//1. Initialize List
+			List<Vector3> connectionPos = new List<Vector3>();
+
+			//2. Get All Tiles w/ Connection Points
+			foreach (WorldTile tile in worldTiles)
+			{
+				if (tile.connectionPoints.Count != 0)
+				{
+					foreach(Transform connectPoint in tile.connectionPoints)
+					{
+						//3. Add Connect Point to List
+						connectionPos.Add(connectPoint.position);
+					}
+				}
+			}
+
+			//4. Return Value
+			return connectionPos;
+		}
+	}
+
+	[SerializeField] private List<Vector3> ctp = new List<Vector3>();
 	private void Update()
 	{
-		wtp = worldTilePositions;
+		ctp = connectionPositions;
 	}
 }

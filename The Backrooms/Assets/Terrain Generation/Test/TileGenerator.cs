@@ -5,8 +5,6 @@ public class TileGenerator : MonoBehaviour
 {
     [SerializeField] private List<TileData> tiles = new List<TileData>();
 
-
-    private int tileIndice;
     void Start()
     {
         //Initial Spawn
