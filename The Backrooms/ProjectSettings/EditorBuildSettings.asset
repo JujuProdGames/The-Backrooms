@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/base.unity
+    path: Assets/Scenes/Scenes/base.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Terrain Generation/ter_tiles.unity
+    path: Assets/Scenes/Scenes/Terrain Generation/ter_tiles.unity
     guid: c5201a2df7cebf140b09d3c7f410d368
   - enabled: 1
-    path: Assets/Scenes/Environment/env_graphics.unity
+    path: Assets/Scenes/Scenes/Environment/env_graphics.unity
     guid: a6735d4edab60ff4e8907e0ac5522212
   m_configObjects: {}

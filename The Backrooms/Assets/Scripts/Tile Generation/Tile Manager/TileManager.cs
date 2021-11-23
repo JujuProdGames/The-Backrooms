@@ -46,7 +46,8 @@ public class TileManager : BaseClass
 				{
 					foreach(Transform connectPoint in tile.connectionPoints)
 					{
-						//3. Add Connect Point to List
+						//3. Add Rounded Connect Point to List
+						connectPoint.position = RoundToIntVector3(connectPoint.position);
 						connectionPos.Add(connectPoint.position);
 					}
 				}

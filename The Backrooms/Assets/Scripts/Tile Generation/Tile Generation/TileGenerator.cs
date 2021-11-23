@@ -8,13 +8,15 @@ public class TileGenerator : TileClass
     void Start()
     {
         //Initial Spawn
-        SpawnTile(RandomTile(tiles), new Vector3(0,0,0));
+        SpawnTile(RandomTilePrefab(tiles), null, new Vector3(0,0,0), RandomTileRotation());
     }
 
-    private void SpawnTile(TileData tileToBeSpawned, Vector3 position)//ADD POSITION
+	private void SpawnTile(TileData tileToBeSpawned, WorldTile neighbouringTile, Vector3 position, Vector3 rotation)//ADD POSITION
 	{
-        GameObject newTileGameObject = Instantiate(tileToBeSpawned.tilePrefab, position, tileToBeSpawned.tilePrefab.transform.rotation);
+		GameObject newTileGameObject = Instantiate(tileToBeSpawned.tilePrefab, position, Quaternion.Euler(rotation));
         WorldTile newTile = newTileGameObject.GetComponent<WorldTile>();
+
+		newTile.neighboringTile = neighbouringTile;
 
         TileManager.worldTiles.Add(newTile);
 	}
@@ -42,7 +44,7 @@ public class TileGenerator : TileClass
 		Transform connectPoint = connectTile.connectionPoints[Random.Range(0, connectTile.connectionPoints.Count)];
 
 		//3. Spawn Tile at Connection Position
-		SpawnTile(RandomTile(tiles), connectPoint.position);
+		SpawnTile(RandomTilePrefab(tiles), connectTile, connectPoint.position, RandomTileRotation());
 
 		//4. Remove Illegal Connections (2 Points; 1 per Tile -=- Destroy Existing Point, Other Won't be Spawned In)
 		DestroyConnectionPoint(connectTile, connectPoint);

@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class WorldTile : TileClass
 {
-    [SerializeField] private TileData tileData;
+	//[HideInInspector]
+	public WorldTile neighboringTile;
+
+	[SerializeField] private TileData tileData;
 
 	[HideInInspector]
 	public List<Transform> connectionPoints = new List<Transform>();
+
+	private bool resetOrientation = true;
 
     // Start is called before the first frame update
     void Start()
@@ -53,18 +58,27 @@ public class WorldTile : TileClass
 			}			
 			#endregion
 
-			#region Spawn Points (If Tile Allows)
+			#region Spawn Points (If Tile Type Allows)
 			switch (i)
 			{				
 				case 0: if (tileData.connectTop) SpawnConnectionPoint(i.ToString(), pointPos); break;
 				case 1: if (tileData.connectRight) SpawnConnectionPoint(i.ToString(), pointPos); break;
 				case 2: if (tileData.connectBottom) SpawnConnectionPoint(i.ToString(), pointPos); break;
 				case 3: if (tileData.connectLeft) SpawnConnectionPoint(i.ToString(), pointPos); break;
-			}			
+			}
 			#endregion			
 		}
 
-		//DistortTile();
+		#region Check Tile Orientation
+		if (neighboringTile != null)
+		{
+			//Debug.Log("Neighboring Tile: " + neighboringTile);
+			if (resetOrientation)
+			{
+				ResetTile();
+			}
+		}
+		#endregion
 	}
 
 	private void SpawnConnectionPoint(string name, Vector3 position)
@@ -75,20 +89,47 @@ public class WorldTile : TileClass
 
 		point.transform.position = RoundToIntVector3(point.transform.position);
 
-		#region Check If This Point is Illegal
-		//Destroy Point if Tile or Connection Point already exists in that Position
-		if (Vector3ExistsInList(point.transform.position, TileManager.worldTilePositions) || Vector3ExistsInList(point.transform.position, TileManager.connectionPositions))
+		if (neighboringTile != null)
 		{
-			DestroyConnectionPoint(this, point.transform);
-			return;
+			#region Check If This Point is Illegal
+			//Destroy Point if Tile or Connection Point already exists in that Position
+			if (Vector3ExistsInList(point.transform.position, TileManager.worldTilePositions) || Vector3ExistsInList(point.transform.position, TileManager.connectionPositions))
+			{
+				if (Vector3Equals(point.transform.position, neighboringTile.transform.position))
+					resetOrientation = false;
+
+				DestroyConnectionPoint(this, point.transform);
+				return;
+			}
+			#endregion
 		}
-		#endregion
 
 		connectionPoints.Add(point.transform);
 	}
 
-	private void DistortTile()
+	/*private bool IsCorrectTileOrientation()
 	{
-		transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, Random.Range(0, 4) * 90, transform.localEulerAngles.z);		
+		foreach (Transform point in connectionPoints)
+		{
+			Debug.Log(point.position);
+			Debug.Log(neighboringTile.transform.position);
+			if (Vector3Equals(point.position, neighboringTile.transform.position))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}*/
+
+	private void ResetTile()
+	{
+		Debug.Log("Resetting Tile...");
+
+		ClearConnectionPoints(this);
+
+		transform.eulerAngles = RandomTileRotation();
+
+		CalculatePointPositions();
 	}
 }

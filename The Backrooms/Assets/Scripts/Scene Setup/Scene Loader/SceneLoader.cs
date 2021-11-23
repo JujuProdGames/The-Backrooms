@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : BaseClass
 {
     [SerializeField] private SceneCollection sceneCollection;
 
