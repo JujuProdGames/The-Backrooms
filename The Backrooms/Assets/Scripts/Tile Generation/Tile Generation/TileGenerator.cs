@@ -3,19 +3,25 @@ using UnityEngine;
 
 public class TileGenerator : TileClass
 {
+	[Header("Probabilty of Tiles Spawning")]
 	[SerializeField] private TileSpawnRate tileRate;
-    [SerializeField] private List<TileData> tiles = new List<TileData>();
 
-	float t = .01f;
-    void Start()
+	[Header("tiles go BRRRRRRRRRRRR")]
+	[Range(0, .25f)]
+	[SerializeField] private float timeBtwnSpawns = .01f;
+	float t;
+
+	void Start()
     {
+		t = timeBtwnSpawns;
+
 		SpawnFirstTile();
     }
 
 	public void SpawnFirstTile()
 	{
 		//Initial Spawn
-		SpawnTile(RandomTilePrefab(tiles, tileRate), null, new Vector3(0, 0, 0), RandomTileRotation());
+		SpawnTile(RandomTilePrefab(tileRate), null, new Vector3(0, 0, 0), RandomTileRotation());
 	}
 
 	private void SpawnTile(TileData tileToBeSpawned, WorldTile neighbouringTile, Vector3 position, Vector3 rotation)//ADD POSITION
@@ -30,16 +36,19 @@ public class TileGenerator : TileClass
 
 	private void Update()
 	{
+		if(timeBtwnSpawns > 0)
+		{
+			if (t > 0)
+				t -= Time.deltaTime;
+			else
+			{
+				GenerateTile();
+				t = timeBtwnSpawns;
+			}
+		}
+
 		if (Input.GetKeyDown(KeyCode.Space))
 			GenerateTile();
-
-		/*if (t > 0)
-			t -= Time.deltaTime;
-		else
-		{
-			GenerateTile();
-			t = .01f;
-		}*/
 	}
 
 	private void GenerateTile()
@@ -57,7 +66,7 @@ public class TileGenerator : TileClass
 		Transform connectPoint = connectTile.connectionPoints[Random.Range(0, connectTile.connectionPoints.Count)];
 
 		//3. Spawn Tile at Connection Position
-		SpawnTile(RandomTilePrefab(tiles, tileRate), connectTile, connectPoint.position, RandomTileRotation());
+		SpawnTile(RandomTilePrefab(tileRate), connectTile, connectPoint.position, RandomTileRotation());
 
 		//4. Remove Illegal Connections (2 Points; 1 per Tile -=- Destroy Existing Point, Other Won't be Spawned In)
 		DestroyConnectionPoint(connectTile, connectPoint);

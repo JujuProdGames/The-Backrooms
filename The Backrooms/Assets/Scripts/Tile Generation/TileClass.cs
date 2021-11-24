@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class TileClass : BaseClass
 {
-	public TileData RandomTilePrefab(List<TileData> tiles, TileSpawnRate tileRate)
+	public TileData RandomTilePrefab(TileSpawnRate tileRate)
 	{
-		/*float e = Random.Range(1, 101);
-		float criticalValue = 0;
-		List<float> criticalPoints = new List<float>();
+		float e = Random.Range(1, 101);
 
-		for (int i = 0; i < tileRate.tiles.Count; i++)
+		Debug.Log("RNG:" + e);
+		for (int i = 0; i < tileRate.criticalValues.Count; i++)
 		{
-			criticalValue += tileRate.tiles[i].spawnChance * 100;
-			criticalPoints.Add(criticalValue);
+			Debug.Log("Current Critical Point" + tileRate.criticalValues[i]);
+			if (e >= tileRate.criticalValues[i] && e < tileRate.criticalValues[i + 1])
+			{
+				Debug.Log("Spawning " + tileRate.tileRates[i].tile);
+				return tileRate.tileRates[i].tile;
+			}
 		}
 
-		for (int i = 0; i < tileRate.tiles.Count; i++)
-		{
-			if (e >= criticalPoints[i] && e < criticalPoints[i + 1])
-				return tileRate.tiles[i].tile;
-		}*/
-
 		Debug.Log("nothing returned");
-		return tiles[Random.Range(0, tiles.Count)];
+		return tileRate.tileRates[Random.Range(0, tileRate.tileRates.Count)].tile;
 	}
 
 	public Vector3 RandomTileRotation()

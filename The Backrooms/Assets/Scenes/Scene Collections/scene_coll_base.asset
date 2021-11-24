@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a2749108f275a64eb8267f3d53b01b2, type: 3}
-  m_Name: coll_base
+  m_Name: scene_coll_base
   m_EditorClassIdentifier: 
   loadScenes:
   - m_SceneAsset: {fileID: 102900000, guid: a6735d4edab60ff4e8907e0ac5522212, type: 3}
-    m_SceneName: env_graphics
+    m_SceneName: gfx_graphics
   - m_SceneAsset: {fileID: 102900000, guid: c5201a2df7cebf140b09d3c7f410d368, type: 3}
-    m_SceneName: ter_tiles
+    m_SceneName: terr_tiles
   setActiveScene:
     m_SceneAsset: {fileID: 102900000, guid: c5201a2df7cebf140b09d3c7f410d368, type: 3}
-    m_SceneName: ter_tiles
+    m_SceneName: terr_tiles

@@ -212,12 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32dcbc18c281f9438632a0ad52c2216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 11400000, guid: f3c84ece3bbffc04d8557da1089a36ba, type: 2}
-  - {fileID: 11400000, guid: e057be4f552122d40b6a8b6e63abf9cf, type: 2}
-  - {fileID: 11400000, guid: 5543621974a5650479d926f590e90671, type: 2}
-  - {fileID: 11400000, guid: b30bbe60135693043b1d2606cd387890, type: 2}
-  - {fileID: 11400000, guid: 01f8044d4c7379a468ae23af369efa6a, type: 2}
+  tileRate: {fileID: 11400000, guid: 6d64c8e2b0019d24fa6644706c98cab3, type: 2}
+  timeBtwnSpawns: 0.002
 --- !u!1 &1811476650
 GameObject:
   m_ObjectHideFlags: 0

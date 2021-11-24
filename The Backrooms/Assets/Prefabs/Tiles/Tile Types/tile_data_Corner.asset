@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85098277cf4e11047ba9ac8a7d436e6d, type: 3}
-  m_Name: Corner
+  m_Name: tile_data_Corner
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 3314340755599267478, guid: 18e2dadd5be887348bd0a85387fec409, type: 3}
   connectTop: 0
