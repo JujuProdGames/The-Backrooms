@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12359dd44ae3b524fb628e063263e1ef, type: 3}
-  m_Name: rate_lvl_0
+  m_Name: tile_rate_lvl_0
   m_EditorClassIdentifier: 
+  SUM: 1
   tileRates:
   - tile: {fileID: 11400000, guid: 5543621974a5650479d926f590e90671, type: 2}
     spawnChance: 0.2
@@ -23,3 +24,4 @@ MonoBehaviour:
     spawnChance: 0.3
   - tile: {fileID: 11400000, guid: f3c84ece3bbffc04d8557da1089a36ba, type: 2}
     spawnChance: 0.35
+  distributionSize: 0.15

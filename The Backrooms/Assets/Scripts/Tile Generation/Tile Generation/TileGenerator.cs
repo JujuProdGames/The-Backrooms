@@ -24,10 +24,10 @@ public class TileGenerator : TileClass
 		SpawnTile(RandomTilePrefab(tileRate), null, new Vector3(0, 0, 0), RandomTileRotation());
 	}
 
-	private void SpawnTile(TileData tileToBeSpawned, WorldTile neighbouringTile, Vector3 position, Vector3 rotation)//ADD POSITION
+	private void SpawnTile(TileData tileToBeSpawned, TileWorld neighbouringTile, Vector3 position, Vector3 rotation)//ADD POSITION
 	{
 		GameObject newTileGameObject = Instantiate(tileToBeSpawned.tilePrefab, position, Quaternion.Euler(rotation));
-        WorldTile newTile = newTileGameObject.GetComponent<WorldTile>();
+        TileWorld newTile = newTileGameObject.GetComponent<TileWorld>();
 
 		newTile.neighboringTile = neighbouringTile;
 
@@ -36,12 +36,13 @@ public class TileGenerator : TileClass
 
 	private void Update()
 	{
-		if(timeBtwnSpawns > 0)
+		if (timeBtwnSpawns > 0)
 		{
 			if (t > 0)
 				t -= Time.deltaTime;
 			else
 			{
+				Debug.Log("Generate Tile");
 				GenerateTile();
 				t = timeBtwnSpawns;
 			}
@@ -54,7 +55,7 @@ public class TileGenerator : TileClass
 	private void GenerateTile()
 	{
 		//1. Pick Random Tile
-		WorldTile connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];
+		TileWorld connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];
 
 		//1.5 Repick Tile if No Points Available
 		while(connectTile.connectionPoints.Count == 0)

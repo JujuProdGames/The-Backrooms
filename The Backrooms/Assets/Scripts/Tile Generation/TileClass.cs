@@ -28,13 +28,13 @@ public class TileClass : BaseClass
 		return new Vector3(-90, Random.Range(0, 4) * 90, 0);
 	}
 
-	public static void DestroyConnectionPoint(WorldTile connectPointTile, Transform connectPoint)
+	public static void DestroyConnectionPoint(TileWorld connectPointTile, Transform connectPoint)
 	{
 		connectPointTile.connectionPoints.Remove(connectPoint);
 		Destroy(connectPoint.gameObject);
 	}
 
-	public static void ClearConnectionPoints(WorldTile tile)
+	public static void ClearConnectionPoints(TileWorld tile)
 	{
 		foreach (Transform point in tile.connectionPoints) Destroy(point.gameObject);
 		tile.connectionPoints.Clear();

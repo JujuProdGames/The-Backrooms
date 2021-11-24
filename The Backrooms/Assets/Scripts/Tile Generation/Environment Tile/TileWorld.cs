@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldTile : TileClass
+public class TileWorld : TileClass
 {
-	//[HideInInspector]
-	public WorldTile neighboringTile;
+	[HideInInspector]
+	public TileWorld neighboringTile;
 
 	[SerializeField] private TileData tileData;
 

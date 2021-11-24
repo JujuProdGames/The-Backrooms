@@ -13,7 +13,7 @@ public class TileManager : BaseClass
 	}
     #endregion
 
-    public static List<WorldTile> worldTiles = new List<WorldTile>();
+    public static List<TileWorld> worldTiles = new List<TileWorld>();
 	public static List<Vector3> worldTilePositions
 	{
 		get{
@@ -21,7 +21,7 @@ public class TileManager : BaseClass
 			List<Vector3> worldTilePos = new List<Vector3>();
 
 			//2. Add Positions Based On Tiles
-			foreach(WorldTile tile in worldTiles)
+			foreach(TileWorld tile in worldTiles)
 			{
 				//Vector3 convertedTilePos = new Vector3(tile.transform.position.x, tile.transform.position.z, 0);
 				worldTilePos.Add(tile.transform.position);
@@ -40,7 +40,7 @@ public class TileManager : BaseClass
 			List<Vector3> connectionPos = new List<Vector3>();
 
 			//2. Get All Tiles w/ Connection Points
-			foreach (WorldTile tile in worldTiles)
+			foreach (TileWorld tile in worldTiles)
 			{
 				if (tile.connectionPoints.Count != 0)
 				{
@@ -56,11 +56,5 @@ public class TileManager : BaseClass
 			//4. Return Value
 			return connectionPos;
 		}
-	}
-
-	[SerializeField] private List<Vector3> ctp = new List<Vector3>();
-	private void Update()
-	{
-		ctp = connectionPositions;
 	}
 }
