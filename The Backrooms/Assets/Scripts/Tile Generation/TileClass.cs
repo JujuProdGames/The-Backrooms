@@ -4,8 +4,25 @@ using UnityEngine;
 
 public class TileClass : BaseClass
 {
-	public TileData RandomTilePrefab(List<TileData> tiles)
+	public TileData RandomTilePrefab(List<TileData> tiles, TileSpawnRate tileRate)
 	{
+		/*float e = Random.Range(1, 101);
+		float criticalValue = 0;
+		List<float> criticalPoints = new List<float>();
+
+		for (int i = 0; i < tileRate.tiles.Count; i++)
+		{
+			criticalValue += tileRate.tiles[i].spawnChance * 100;
+			criticalPoints.Add(criticalValue);
+		}
+
+		for (int i = 0; i < tileRate.tiles.Count; i++)
+		{
+			if (e >= criticalPoints[i] && e < criticalPoints[i + 1])
+				return tileRate.tiles[i].tile;
+		}*/
+
+		Debug.Log("nothing returned");
 		return tiles[Random.Range(0, tiles.Count)];
 	}
 

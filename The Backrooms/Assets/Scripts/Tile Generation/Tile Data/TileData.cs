@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu (fileName = "New Tile", menuName = "Tile")]
+[CreateAssetMenu (fileName = "New Tile", menuName = "Tile/Tile")]
 public class TileData : ScriptableObject
 {
     public GameObject tilePrefab;

@@ -3,13 +3,20 @@ using UnityEngine;
 
 public class TileGenerator : TileClass
 {
+	[SerializeField] private TileSpawnRate tileRate;
     [SerializeField] private List<TileData> tiles = new List<TileData>();
 
+	float t = .01f;
     void Start()
     {
-        //Initial Spawn
-        SpawnTile(RandomTilePrefab(tiles), null, new Vector3(0,0,0), RandomTileRotation());
+		SpawnFirstTile();
     }
+
+	public void SpawnFirstTile()
+	{
+		//Initial Spawn
+		SpawnTile(RandomTilePrefab(tiles, tileRate), null, new Vector3(0, 0, 0), RandomTileRotation());
+	}
 
 	private void SpawnTile(TileData tileToBeSpawned, WorldTile neighbouringTile, Vector3 position, Vector3 rotation)//ADD POSITION
 	{
@@ -24,12 +31,18 @@ public class TileGenerator : TileClass
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
+			GenerateTile();
+
+		/*if (t > 0)
+			t -= Time.deltaTime;
+		else
 		{
-            GenerateTile();
-		}
+			GenerateTile();
+			t = .01f;
+		}*/
 	}
 
-    private void GenerateTile()
+	private void GenerateTile()
 	{
 		//1. Pick Random Tile
 		WorldTile connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];
@@ -44,7 +57,7 @@ public class TileGenerator : TileClass
 		Transform connectPoint = connectTile.connectionPoints[Random.Range(0, connectTile.connectionPoints.Count)];
 
 		//3. Spawn Tile at Connection Position
-		SpawnTile(RandomTilePrefab(tiles), connectTile, connectPoint.position, RandomTileRotation());
+		SpawnTile(RandomTilePrefab(tiles, tileRate), connectTile, connectPoint.position, RandomTileRotation());
 
 		//4. Remove Illegal Connections (2 Points; 1 per Tile -=- Destroy Existing Point, Other Won't be Spawned In)
 		DestroyConnectionPoint(connectTile, connectPoint);
