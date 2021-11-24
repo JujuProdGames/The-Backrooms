@@ -124,8 +124,6 @@ public class TileWorld : TileClass
 
 	private void ResetTile()
 	{
-		Debug.Log("Resetting Tile...");
-
 		ClearConnectionPoints(this);
 
 		transform.eulerAngles = RandomTileRotation();

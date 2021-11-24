@@ -8,18 +8,15 @@ public class TileClass : BaseClass
 	{
 		float e = Random.Range(1, 101);
 
-		Debug.Log("RNG:" + e);
 		for (int i = 0; i < tileRate.criticalValues.Count; i++)
 		{
-			Debug.Log("Current Critical Point" + tileRate.criticalValues[i]);
-			if (e >= tileRate.criticalValues[i] && e < tileRate.criticalValues[i + 1])
+			if (e >= tileRate.criticalValues[i] && e <= tileRate.criticalValues[i + 1])
 			{
-				Debug.Log("Spawning " + tileRate.tileRates[i].tile);
 				return tileRate.tileRates[i].tile;
 			}
 		}
 
-		Debug.Log("nothing returned");
+		Debug.LogError("nothing returned lelelelelelelelrelelelel");
 		return tileRate.tileRates[Random.Range(0, tileRate.tileRates.Count)].tile;
 	}
 

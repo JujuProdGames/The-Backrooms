@@ -42,7 +42,6 @@ public class TileGenerator : TileClass
 				t -= Time.deltaTime;
 			else
 			{
-				Debug.Log("Generate Tile");
 				GenerateTile();
 				t = timeBtwnSpawns;
 			}
