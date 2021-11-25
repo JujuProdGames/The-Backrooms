@@ -6,17 +6,14 @@ public class TileGenerator : TileClass
 	[Header("Probabilty of Tiles Spawning")]
 	[SerializeField] private TileSpawnRate tileRate;
 
-	[Header("tiles go BRRRRRRRRRRRR")]
-	[Range(0, .25f)]
-	[SerializeField] private float timeBtwnSpawns = .01f;
-	float t;
-
-	void Start()
-    {
-		t = timeBtwnSpawns;
-
-		SpawnFirstTile();
-    }
+	#region Singleton
+	public static TileGenerator Instance;
+	private void Awake()
+	{
+		if (Instance == null) Instance = this;
+		else Destroy(gameObject);
+	}
+	#endregion
 
 	public void SpawnFirstTile()
 	{
@@ -34,26 +31,7 @@ public class TileGenerator : TileClass
         TileManager.worldTiles.Add(newTile);
 	}
 
-	private void Update()
-	{
-		if (TileManager.worldTiles.Count >= TileManager.tileLimit) return;
-
-		if (timeBtwnSpawns > 0)
-		{
-			if (t > 0)
-				t -= Time.deltaTime;
-			else
-			{
-				GenerateTile();
-				t = timeBtwnSpawns;
-			}
-		}
-
-		if (Input.GetKeyDown(KeyCode.Space))
-			GenerateTile();
-	}
-
-	private void GenerateTile()
+	public void GenerateTile()
 	{
 		//1. Pick Random Tile
 		TileWorld connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];

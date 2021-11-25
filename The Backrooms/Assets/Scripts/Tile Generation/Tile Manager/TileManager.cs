@@ -5,10 +5,10 @@ using UnityEngine;
 public class TileManager : BaseClass
 {
 	#region Singleton
-	private static TileManager instance;
+	public static TileManager Instance;
 	private void Awake()
 	{
-        if (instance == null) instance = this;
+        if (Instance == null) Instance = this;
         else Destroy(gameObject);
 	}
 	#endregion
@@ -60,5 +60,5 @@ public class TileManager : BaseClass
 	#endregion
 
 	[Range(100, 1000)]
-	public static float tileLimit = 300f;
+	public float tileLimit = 300f;
 }
