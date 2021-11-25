@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2399510293897286759}
   - component: {fileID: 5760425400541867310}
   - component: {fileID: 8120891119632032903}
+  - component: {fileID: 1256292359013242122}
   m_Layer: 0
   m_Name: tile_lvl0_Hall
   m_TagString: Untagged
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4870465721563733916}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.9999998, y: 2.9999998, z: 2.9999998}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5760425400541867310
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61,7 +62,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6922793697723135513, guid: 72e4d6a56bf161246a752b5cfe83f5b5, type: 3}
+  - {fileID: 2100000, guid: 5207832da8fde6d47ba6c674cee6132b, type: 2}
+  - {fileID: 2100000, guid: 438b61e934b3ac04bb390a4258c16955, type: 2}
+  - {fileID: 2100000, guid: 1b7dac383aadf1844802e5a58400b5a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +86,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1256292359013242122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870465721563733916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1871855058fe1ee48831b7f32f16f9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neighboringTile: {fileID: 0}
+  tileData: {fileID: 11400000, guid: b30bbe60135693043b1d2606cd387890, type: 2}
+  connectionPoints: []

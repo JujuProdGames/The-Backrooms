@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85098277cf4e11047ba9ac8a7d436e6d, type: 3}
   m_Name: tile_data_Middle
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 4892428454397868478, guid: b5b4075091f612c4586306e8421128d3, type: 3}
+  tilePrefab: {fileID: 178697196780412949, guid: 96ca5f099a816a449a5d45afb3178d1d, type: 3}
   connectTop: 1
   connectRight: 1
   connectBottom: 1

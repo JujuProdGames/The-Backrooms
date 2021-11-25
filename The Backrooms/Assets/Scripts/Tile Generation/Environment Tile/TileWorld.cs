@@ -8,6 +8,7 @@ public class TileWorld : TileClass
 	public TileWorld neighboringTile;
 
 	[SerializeField] private TileData tileData;
+	private float tileSize = 2.15f;
 
 	[HideInInspector]
 	public List<Transform> connectionPoints = new List<Transform>();
@@ -29,8 +30,6 @@ public class TileWorld : TileClass
 			Vector3 pointPos = new Vector3(0, 0);
 
 			#region Calculating Point Positions
-			float tileSize = transform.localScale.x;
-
 			switch (i)
 			{
 				#region Point Positions Diagram
