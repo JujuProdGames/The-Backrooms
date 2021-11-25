@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6908768053242812316}
   - component: {fileID: 5393051137470208880}
   - component: {fileID: 2806565010497559001}
+  - component: {fileID: -667726493144273736}
   - component: {fileID: 607575465321704927}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_lvl0_Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,6 +87,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-667726493144273736
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143431871404103395}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1083108532252104561, guid: 72e4d6a56bf161246a752b5cfe83f5b5, type: 3}
 --- !u!114 &607575465321704927
 MonoBehaviour:
   m_ObjectHideFlags: 0

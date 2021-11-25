@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadScenes:
   - m_SceneAsset: {fileID: 102900000, guid: a6735d4edab60ff4e8907e0ac5522212, type: 3}
-    m_SceneName: scene_gfx_camera
+    m_SceneName: scene_gfx_lighting
   - m_SceneAsset: {fileID: 102900000, guid: c5201a2df7cebf140b09d3c7f410d368, type: 3}
     m_SceneName: scene_ter_tiles
+  - m_SceneAsset: {fileID: 102900000, guid: 3bb1c67a644b75242872f31f258f9025, type: 3}
+    m_SceneName: scene_env_player
   setActiveScene:
     m_SceneAsset: {fileID: 102900000, guid: c5201a2df7cebf140b09d3c7f410d368, type: 3}
     m_SceneName: scene_ter_tiles

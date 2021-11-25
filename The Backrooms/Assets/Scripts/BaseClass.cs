@@ -43,6 +43,21 @@ public class BaseClass : MonoBehaviour
 			Mathf.RoundToInt(vectorToRound.z)
 			);
 	}
+
+	public static Vector3 Vector3Abs(Vector3 vector3)
+	{
+		return new Vector3(Mathf.Abs(vector3.x), Mathf.Abs(vector3.y), Mathf.Abs(vector3.z));
+	}
+
+	public static Vector3 Vector3Pow(Vector3 v1, Vector3 v2)
+	{
+		return new Vector3(Mathf.Pow(v1.x, v2.x), Mathf.Pow(v1.y, v2.y), Mathf.Pow(v1.z, v2.z));
+	}
+
+	public static Vector3 Vector3Sign(Vector3 vector3)
+	{
+		return new Vector3(Mathf.Sign(vector3.x), Mathf.Sign(vector3.y), Mathf.Sign(vector3.z));
+	}
 	#endregion
 
 	#endregion

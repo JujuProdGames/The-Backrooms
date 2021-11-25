@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5356683396093375845}
   - component: {fileID: 6490910588031416800}
   - component: {fileID: 1289281772772790944}
+  - component: {fileID: -704481987601745400}
   - component: {fileID: 5593791903293198112}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_lvl0_Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,6 +87,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-704481987601745400
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620515526567531929}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5221963080773851136, guid: 72e4d6a56bf161246a752b5cfe83f5b5, type: 3}
 --- !u!114 &5593791903293198112
 MonoBehaviour:
   m_ObjectHideFlags: 0
