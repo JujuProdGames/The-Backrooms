@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : BaseClass
 {
     [Header("Components")]
     [SerializeField] private CharacterController controller;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 		#endregion
 
 		#region Calculate Speed
-		float tempSpeed = Input.GetKey("left shift") && isGrounded ? speed * speedMultiplier : speed;        
+		float tempSpeed = Input.GetKey("left shift") ? speed * speedMultiplier : speed;        
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -66,4 +66,5 @@ public class PlayerMovement : MonoBehaviour
 	{
 		velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 	}
+    //eeeeee
 }

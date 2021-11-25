@@ -11,9 +11,10 @@ public class TileManager : BaseClass
         if (instance == null) instance = this;
         else Destroy(gameObject);
 	}
-    #endregion
+	#endregion
 
-    public static List<TileWorld> worldTiles = new List<TileWorld>();
+	#region Tile Data
+	public static List<TileWorld> worldTiles = new List<TileWorld>();
 	public static List<Vector3> worldTilePositions
 	{
 		get{
@@ -31,7 +32,6 @@ public class TileManager : BaseClass
 			return worldTilePos;
 		}		
 	}
-
 	public static List<Vector3> connectionPositions
 	{		
 		get
@@ -57,4 +57,8 @@ public class TileManager : BaseClass
 			return connectionPos;
 		}
 	}
+	#endregion
+
+	[Range(100, 1000)]
+	public static float tileLimit = 300f;
 }

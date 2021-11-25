@@ -36,6 +36,8 @@ public class TileGenerator : TileClass
 
 	private void Update()
 	{
+		if (TileManager.worldTiles.Count >= TileManager.tileLimit) return;
+
 		if (timeBtwnSpawns > 0)
 		{
 			if (t > 0)
@@ -56,10 +58,18 @@ public class TileGenerator : TileClass
 		//1. Pick Random Tile
 		TileWorld connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];
 
-		//1.5 Repick Tile if No Points Available
-		while(connectTile.connectionPoints.Count == 0)
+		//1.5 Repick Tile if No Points Available -- CAN CAUSE CRASH IF NO MORE SPOTS ARE AVAILABLE!
+		if (TileManager.connectionPositions.Count > 0)
 		{
-			connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];
+			while (connectTile.connectionPoints.Count == 0)
+			{
+				connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];
+			}
+		}
+		else
+		{
+			Debug.LogError("No More Connection Spots Can Be Found. sadge");
+			return;
 		}
 
 		//2. Pick Random Connection from Tile

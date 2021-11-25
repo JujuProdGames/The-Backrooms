@@ -17,6 +17,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Light
+    second: {fileID: 2100000, guid: a5afb9d284dcc5842bea6824e9aab947, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light Outline
+    second: {fileID: 2100000, guid: 38af19d5da327eb49b5160909787788a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Wall_
     second: {fileID: 2100000, guid: 1b7dac383aadf1844802e5a58400b5a3, type: 2}
   materials:
