@@ -36,4 +36,22 @@ public class TileClass : BaseClass
 		foreach (Transform point in tile.connectionPoints) Destroy(point.gameObject);
 		tile.connectionPoints.Clear();
 	}
+
+	public static void LoadTile(TileWorld tile)
+	{
+		tile.isActive = true;
+		foreach (MeshRenderer gfx in tile.GetComponentsInChildren<MeshRenderer>())
+		{
+			gfx.enabled = true;
+		}
+	}
+
+	public static void UnloadTile(TileWorld tile)
+	{
+		tile.isActive = false;
+		foreach (MeshRenderer gfx in tile.GetComponentsInChildren<MeshRenderer>())
+		{
+			gfx.enabled = false;
+		}
+	}
 }

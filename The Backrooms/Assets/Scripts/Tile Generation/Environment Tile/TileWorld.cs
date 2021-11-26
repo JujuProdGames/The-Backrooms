@@ -5,6 +5,9 @@ using UnityEngine;
 public class TileWorld : TileClass
 {
 	[HideInInspector]
+	public bool isActive = true;
+
+	[HideInInspector]
 	public TileWorld neighboringTile;
 
 	[SerializeField] private TileData tileData;
@@ -102,24 +105,8 @@ public class TileWorld : TileClass
 			}
 			#endregion
 		}
-
 		connectionPoints.Add(point.transform);
 	}
-
-	/*private bool IsCorrectTileOrientation()
-	{
-		foreach (Transform point in connectionPoints)
-		{
-			Debug.Log(point.position);
-			Debug.Log(neighboringTile.transform.position);
-			if (Vector3Equals(point.position, neighboringTile.transform.position))
-			{
-				return true;
-			}
-		}
-
-		return false;
-	}*/
 
 	private void ResetTile()
 	{

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileManager : BaseClass
+public class TileManager : TileClass
 {
 	#region Singleton
 	public static TileManager Instance;
@@ -39,10 +39,10 @@ public class TileManager : BaseClass
 			//1. Initialize List
 			List<Vector3> connectionPos = new List<Vector3>();
 
-			//2. Get All Tiles w/ Connection Points
+			//2. Get All Active Tiles w/ Connection Points
 			foreach (TileWorld tile in worldTiles)
 			{
-				if (tile.connectionPoints.Count != 0)
+				if (tile.gameObject.activeInHierarchy && tile.connectionPoints.Count > 0)
 				{
 					foreach(Transform connectPoint in tile.connectionPoints)
 					{
@@ -59,6 +59,6 @@ public class TileManager : BaseClass
 	}
 	#endregion
 
-	[Range(100, 1000)]
+	[Range(100, 100000)]
 	public float tileLimit = 300f;
 }

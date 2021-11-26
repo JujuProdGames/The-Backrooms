@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TileSimulator : MonoBehaviour
+public class TileSimulator : TileClass
 {
 	TileGenerator tg;
 
@@ -21,20 +19,18 @@ public class TileSimulator : MonoBehaviour
 
 	private void Update()
 	{
-		if (TileManager.worldTiles.Count >= TileManager.Instance.tileLimit) return;
-
 		if (timeBtwnSpawns > 0)
 		{
 			if (t > 0)
 				t -= Time.deltaTime;
 			else
 			{
-				tg.GenerateTile();
+				tg.GenerateTile(TileManager.worldTiles);
 				t = timeBtwnSpawns;
 			}
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space))
-			tg.GenerateTile();
+			tg.GenerateTile(TileManager.worldTiles);
 	}
 }

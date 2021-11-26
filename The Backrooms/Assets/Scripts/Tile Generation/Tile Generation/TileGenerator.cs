@@ -31,17 +31,24 @@ public class TileGenerator : TileClass
         TileManager.worldTiles.Add(newTile);
 	}
 
-	public void GenerateTile()
+	public void GenerateTile(List<TileWorld> tilesToPickFrom)
 	{
+		//0. Check if we can spawn tiles
+		if (TileManager.worldTiles.Count >= TileManager.Instance.tileLimit)
+		{
+			Debug.LogError("Too many tiles spawned! sadge EEEEEEE");
+			return;
+		}
+
 		//1. Pick Random Tile
-		TileWorld connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];
+		TileWorld connectTile = tilesToPickFrom[Random.Range(0, tilesToPickFrom.Count)];
 
 		//1.5 Repick Tile if No Points Available -- CAN CAUSE CRASH IF NO MORE SPOTS ARE AVAILABLE!
 		if (TileManager.connectionPositions.Count > 0)
 		{
 			while (connectTile.connectionPoints.Count == 0)
 			{
-				connectTile = TileManager.worldTiles[Random.Range(0, TileManager.worldTiles.Count)];
+				connectTile = tilesToPickFrom[Random.Range(0, tilesToPickFrom.Count)];
 			}
 		}
 		else
