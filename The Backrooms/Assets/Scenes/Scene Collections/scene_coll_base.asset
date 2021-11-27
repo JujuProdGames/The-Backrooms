@@ -19,6 +19,8 @@ MonoBehaviour:
     m_SceneName: scene_ter_tiles
   - m_SceneAsset: {fileID: 102900000, guid: 3bb1c67a644b75242872f31f258f9025, type: 3}
     m_SceneName: scene_env_player
+  - m_SceneAsset: {fileID: 102900000, guid: 1c638f8140c8aa84d9780692d029158a, type: 3}
+    m_SceneName: scene_env_sound
   setActiveScene:
     m_SceneAsset: {fileID: 102900000, guid: c5201a2df7cebf140b09d3c7f410d368, type: 3}
     m_SceneName: scene_ter_tiles

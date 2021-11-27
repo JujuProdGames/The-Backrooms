@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 642416910575010610}
   - component: {fileID: -3405116187053602954}
   - component: {fileID: 628080906609515056}
+  - component: {fileID: 3888455733717734916}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -125,16 +126,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459013854ec3320468e6c8f69451a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 0
   controller: {fileID: 642416910575010610}
-  speed: 8
-  speedMultiplier: 1.5
-  jumpHeight: 3
+  speed: 6
+  runMultiplier: 1.5
+  jumpHeight: 1.5
   groundCheck: {fileID: 7621599937086788672}
   groundDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   gravity: -27.54
+  startStaminaAmount: 1
+  startRechargeStaminaAmount: 2.5
+--- !u!114 &3888455733717734916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621599937457867199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8eeaca2d9f2ea4d9f73d2cda7a8a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepRate: 0.8
+  runRateMultiplier: 1.75
 --- !u!1 &7621599938053570317
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +164,7 @@ GameObject:
   - component: {fileID: 7621599938053570316}
   - component: {fileID: 7621599938053570318}
   - component: {fileID: 7621599938053570319}
+  - component: {fileID: 71948204414200957}
   m_Layer: 0
   m_Name: Player GFX
   m_TagString: Untagged
@@ -218,6 +237,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!143 &71948204414200957
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621599938053570317}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7621599938710919540
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,8 +299,8 @@ Camera:
   m_GameObject: {fileID: 7621599938710919540}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

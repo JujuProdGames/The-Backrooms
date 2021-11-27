@@ -127,11 +127,8 @@ public class TileLoader : TileClass
 
 		#region Load/Unload
 		//1. Detect when Player Enters new Room
-
 		if (!Vector3Equals(comparePlayerRoom, currentPlayerRoom))
 		{
-			Debug.Log("Connection Points Available: " + TileManager.connectionPositions.Count);
-
 			//2. Load/Unload Tiles Accordingly
 			StartCoroutine(LoadTiles());
 
@@ -145,16 +142,8 @@ public class TileLoader : TileClass
 	{
 		foreach (TileWorld tile in TileManager.worldTiles)
 		{
-			if (!tile.isActive && tilesInRange.Contains(tile))
-			{
-				Debug.Log("Contains!");
-				LoadTile(tile);
-			}
-			else if (tile.isActive && !tilesInRange.Contains(tile))
-			{
-				Debug.Log("Doesn't Contain!");
-				UnloadTile(tile);
-			}
+			if (!tile.isActive && tilesInRange.Contains(tile)) LoadTile(tile);
+			else if (tile.isActive && !tilesInRange.Contains(tile)) UnloadTile(tile);
 
 			yield return new WaitForSecondsRealtime(0);
 		}

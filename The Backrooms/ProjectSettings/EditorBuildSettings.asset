@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scenes/Environment/scene_env_player.unity
     guid: 3bb1c67a644b75242872f31f258f9025
+  - enabled: 1
+    path: Assets/Scenes/Scenes/Environment/scene_env_sound.unity
+    guid: 1c638f8140c8aa84d9780692d029158a
   m_configObjects: {}

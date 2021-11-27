@@ -29,8 +29,8 @@ Preset:
     value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: tileSize
-    value: 3
+    propertyPath: tileDiameter
+    value: 6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: initialTiles
