@@ -109,9 +109,6 @@ public class TileLoader : TileClass
 		#endregion
 
 		#region Generate		
-		/*Debug.Log("Tile Required: " + tilesAroundPlayer);
-		Debug.Log("Tiles in Range: " + tilesInRange.Count);*/
-
 		//2. Spawn Tile if Number of Tiles around Player aren't Met
 		if (tilesInRange.Count <= tilesAroundPlayer)
 		{
@@ -124,28 +121,5 @@ public class TileLoader : TileClass
 			}
 		}
 		#endregion
-
-		#region Load/Unload
-		//1. Detect when Player Enters new Room
-		if (!Vector3Equals(comparePlayerRoom, currentPlayerRoom))
-		{
-			//2. Load/Unload Tiles Accordingly
-			StartCoroutine(LoadTiles());
-
-			comparePlayerRoom = currentPlayerRoom;
-		}
-
-		#endregion
-	}
-
-	private IEnumerator LoadTiles()
-	{
-		foreach (TileWorld tile in TileManager.worldTiles)
-		{
-			if (!tile.isActive && tilesInRange.Contains(tile)) LoadTile(tile);
-			else if (tile.isActive && !tilesInRange.Contains(tile)) UnloadTile(tile);
-
-			yield return new WaitForSecondsRealtime(0);
-		}
 	}
 }

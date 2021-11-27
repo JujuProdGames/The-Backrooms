@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7621599937086788672}
   m_Layer: 0
   m_Name: Ground Check
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,9 +45,10 @@ GameObject:
   - component: {fileID: -3405116187053602954}
   - component: {fileID: 628080906609515056}
   - component: {fileID: 3888455733717734916}
+  - component: {fileID: 334116932195863229}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,6 +154,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepRate: 0.8
   runRateMultiplier: 1.75
+--- !u!54 &334116932195863229
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621599937457867199}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &7621599938053570317
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,10 +181,9 @@ GameObject:
   - component: {fileID: 7621599938053570316}
   - component: {fileID: 7621599938053570318}
   - component: {fileID: 7621599938053570319}
-  - component: {fileID: 71948204414200957}
   m_Layer: 0
   m_Name: Player GFX
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,24 +253,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!143 &71948204414200957
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7621599938053570317}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7621599938710919540
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +268,7 @@ GameObject:
   - component: {fileID: 1876731747095247344}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,8 +351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227109b06d44b514bbd8c16e53d25307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 180
   player: {fileID: 7621599937457866819}
+  pm: {fileID: 628080906609515056}
+  sensitivity: 180
+  bobbingSpeed: 4
+  bobbingAmount: 0.2
 --- !u!114 &1876731747095247344
 MonoBehaviour:
   m_ObjectHideFlags: 0

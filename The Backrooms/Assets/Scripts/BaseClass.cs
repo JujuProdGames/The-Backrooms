@@ -8,6 +8,11 @@ public class BaseClass : MonoBehaviour
 	#region Methods
 
 	#region Vector3
+	public static Vector3 RandomVector3InCircle(Vector3 middle, float radius)
+	{
+		return middle + Random.insideUnitSphere * radius;
+	}
+
 	public static bool Vector3Equals(Vector3 a, Vector3 b)
 	{
 		a = RoundToIntVector3(a);

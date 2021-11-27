@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68458b7829d963d4ba1cc5b8ead8073a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileLimit: 30000
+  tileLimit: 100000
 --- !u!1 &1479313848
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,8 +341,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   tileDiameter: 6
-  initialTiles: 100
-  timeBtwnSpawns: 1e-10
+  initialTiles: 1500
+  timeBtwnSpawns: 0
   loadRadius: 50
   percentFilled: 0.9
   maxTilesNumberWithHoles: 223

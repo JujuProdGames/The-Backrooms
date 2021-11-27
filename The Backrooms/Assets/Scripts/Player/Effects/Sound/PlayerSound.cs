@@ -11,7 +11,7 @@ public class PlayerSound : MonoBehaviour
     [SerializeField] private float stepRate;
     private float stepCoolDown;
     [Range(1.25f, 2.25f)]
-    [SerializeField] private float runRateMultiplier;
+    [SerializeField] private float runRateMultiplier = 1.75f;
     // Start is called before the first frame update
     void Start()
     {

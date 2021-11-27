@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scenes/Environment/scene_env_sound.unity
     guid: 1c638f8140c8aa84d9780692d029158a
+  - enabled: 1
+    path: Assets/Scenes/Scenes/Terrain Generation/scene_ter_triggerrings.unity
+    guid: 2637d38949b81dd40aef90ce050037d2
   m_configObjects: {}
