@@ -45,16 +45,24 @@ public class PlayerSound : MonoBehaviour
 				{
                     case PlayerMovement.PlayerMovementState.Walking:
                         stepCoolDown = stepRate;
+
                         break;
                     case PlayerMovement.PlayerMovementState.Running:
                         stepCoolDown = stepRate / runRateMultiplier;
+
                         break;
                     case PlayerMovement.PlayerMovementState.Exhausted:
                         stepCoolDown = stepRate * runRateMultiplier;
+                        
                         break;
 				}
             }         
         }
-		#endregion
-	}
+        #endregion
+
+        #region Exhausted
+        if (!pm.hasStamina && !am.IsPlaying("Player Exhausted")) am.PlayOneShot("Player Exhausted");
+        else if(pm.hasStamina && am.IsPlaying("Player Exhausted")) am.Stop("Player Exhausted");
+        #endregion
+    }
 }

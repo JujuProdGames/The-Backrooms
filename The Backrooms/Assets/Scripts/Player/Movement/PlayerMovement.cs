@@ -68,7 +68,7 @@ public class PlayerMovement : BaseClass
 	[Range(0.25f, 3f)]
 	[SerializeField] private float startRechargeStaminaAmount = 1.5f;
 	private float rechargeStaminaAmount;
-	private bool hasStamina
+	public bool hasStamina
 	{
 		get
 		{
@@ -118,9 +118,13 @@ public class PlayerMovement : BaseClass
 		#region Calculate Speed
 		float tempMultiplier = runMultiplier;
 
-		if (!hasStamina) tempMultiplier = 1 / runMultiplier;
-
 		float tempSpeed = Input.GetKey("left shift") ? speed * tempMultiplier : speed;
+
+		if (!hasStamina)
+		{
+			tempMultiplier = 1 / runMultiplier;
+			tempSpeed = speed * tempMultiplier;
+		}
 		#endregion
 
 		float x = Input.GetAxis("Horizontal");
@@ -144,14 +148,13 @@ public class PlayerMovement : BaseClass
 			}
 			else
 			{
-				staminaAmount += Time.deltaTime;
+				staminaAmount += Time.deltaTime * .5f;
 			}
 		}
 		else
 		{
 			if(rechargeStaminaAmount > 0)
 			{
-				Debug.Log("Recharging Stamina...");
 				rechargeStaminaAmount -= Time.deltaTime;
 			}
 			else

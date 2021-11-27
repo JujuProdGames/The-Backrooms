@@ -138,7 +138,7 @@ MonoBehaviour:
     m_Bits: 8
   gravity: -27.54
   startStaminaAmount: 1
-  startRechargeStaminaAmount: 2.5
+  startRechargeStaminaAmount: 3
 --- !u!114 &3888455733717734916
 MonoBehaviour:
   m_ObjectHideFlags: 0
