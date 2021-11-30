@@ -54,6 +54,24 @@ public class BaseClass : MonoBehaviour
 		return new Vector3(Mathf.Abs(vector3.x), Mathf.Abs(vector3.y), Mathf.Abs(vector3.z));
 	}
 
+	public static Vector3 Vector3Add(Vector3 v1, Vector3 v2)
+	{
+		return new Vector3(
+			v1.x + v2.x,
+			v1.y + v2.y,
+			v1.z + v2.z
+			);
+	}
+
+	public static Vector3 Vector3Subtract(Vector3 v1, Vector3 v2)
+	{
+		return new Vector3(
+			v1.x - v2.x,
+			v1.y - v2.y,
+			v1.z - v2.z
+			);
+	}
+
 	public static Vector3 Vector3Pow(Vector3 v1, Vector3 v2)
 	{
 		return new Vector3(Mathf.Pow(v1.x, v2.x), Mathf.Pow(v1.y, v2.y), Mathf.Pow(v1.z, v2.z));

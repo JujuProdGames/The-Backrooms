@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3295178432722152970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2434516196139131636}
+  m_Layer: 0
+  m_Name: Jumpscare Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2434516196139131636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295178432722152970}
+  m_LocalRotation: {x: -0.50347847, y: 0.4964972, z: 0.4964972, w: 0.50347847}
+  m_LocalPosition: {x: 0, y: 1.06, z: -2.69}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7621599937457866819}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -90, y: 97, z: -7.8}
 --- !u!1 &7621599937086788673
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +77,7 @@ GameObject:
   - component: {fileID: 628080906609515056}
   - component: {fileID: 3888455733717734916}
   - component: {fileID: 334116932195863229}
+  - component: {fileID: 7072149053839224963}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -68,6 +100,7 @@ Transform:
   - {fileID: 7621599938053570316}
   - {fileID: 7621599938710919545}
   - {fileID: 7621599937086788672}
+  - {fileID: 2434516196139131636}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,6 +203,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7072149053839224963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621599937457867199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd9f1598b8c8944b87a0c463afa7dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpscareSpot: {fileID: 2434516196139131636}
+  playerCam: {fileID: 7621599938710919542}
+  monsterLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  turnSpeed: 15
 --- !u!1 &7621599938053570317
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +407,7 @@ MonoBehaviour:
   sensitivity: 180
   bobbingSpeed: 4
   bobbingAmount: 0.2
+  bobRateMultiplier: 1.75
 --- !u!114 &1876731747095247344
 MonoBehaviour:
   m_ObjectHideFlags: 0

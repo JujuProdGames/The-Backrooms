@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerCameraLook : BaseClass
@@ -14,6 +13,7 @@ public class PlayerCameraLook : BaseClass
 
 	private float bobTimer;
     private float startYPos;
+
 	[Header("Head Bobbing")]
 	[Range(2, 15)]
 	[SerializeField] private float bobbingSpeed = 14f;
@@ -50,6 +50,28 @@ public class PlayerCameraLook : BaseClass
 		}
 	}
 
+	[Header("Jumpscare")]
+	private bool jumpscareTriggered;
+
+	#region Subscribe
+	private void OnEnable()
+	{
+		player.GetComponent<PlayerJumpscare>().onJumpscare += JumpscareTriggered;
+	}
+
+	private void OnDisable()
+	{
+		player.GetComponent<PlayerJumpscare>().onJumpscare -= JumpscareTriggered;
+	}
+	#endregion
+
+	#region Jumpscare Action
+	private void JumpscareTriggered(object sender, EventArgs e)
+	{
+		jumpscareTriggered = true;
+	}
+	#endregion
+
 	private void Start()
 	{
         Cursor.lockState = CursorLockMode.Locked;
@@ -60,6 +82,10 @@ public class PlayerCameraLook : BaseClass
 	// Update is called once per frame
 	void Update()
 	{
+		#region Jumpscare Trigger
+		if (jumpscareTriggered) return;
+		#endregion
+
 		Look();
 
 		if (pm.isMoving)

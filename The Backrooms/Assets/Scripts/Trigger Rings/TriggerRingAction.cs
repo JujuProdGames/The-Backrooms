@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class TriggerRingAction : BaseClass
@@ -8,6 +7,14 @@ public class TriggerRingAction : BaseClass
 	[Range(10, 40)]
 	[SerializeField] private float spawnRadius = 20f;
 	[SerializeField] private GameObject appearance1, appearance2;
+
+	[Header("Jumpscare")]
+	[SerializeField] private GameObject monster;
+	public static event EventHandler<OnJumpscareIdleArgs> onJumpscareIdle;
+	public class OnJumpscareIdleArgs : EventArgs
+	{
+		public Vector3 monsterPos;
+	}
 
 	#region Subscribe + Unsubscribe
 	private void OnEnable()
@@ -28,8 +35,16 @@ public class TriggerRingAction : BaseClass
 		switch (e.collisionNumber)
 		{
 			case 1:
-				SpawnSound(appearance1);
+				SpawnMonsterJumpscare(monster, Player.Instance.GetComponent<PlayerJumpscare>().jumpscareSpot, true);
 				break;
+				/*SpawnSound(appearance1);
+				break;
+			case 2:
+				SpawnSound(appearance2);
+				break;
+			case 3:
+				SpawnMonsterJumpscare(monster);
+				break;*/
 		}
 	}
 
@@ -40,5 +55,14 @@ public class TriggerRingAction : BaseClass
 
 		GameObject soundObject = Instantiate(sound, randomPos, Quaternion.identity);
 		soundObject.GetComponent<AudioSource>().Play();
+	}
+
+	private void SpawnMonsterJumpscare(GameObject monster, Transform jumpscareSpot, bool unparentObject = false)
+	{
+		GameObject jumpscare = Instantiate(monster, jumpscareSpot.position, jumpscareSpot.rotation, jumpscareSpot);
+		
+		if(unparentObject) jumpscare.transform.parent = null;
+		
+		onJumpscareIdle(this, new OnJumpscareIdleArgs {monsterPos = jumpscare.transform.position});
 	}
 }
