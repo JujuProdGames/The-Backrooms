@@ -341,7 +341,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   tileDiameter: 6
-  initialTiles: 1500
+  initialTiles: 100
   timeBtwnSpawns: 0
   loadRadius: 50
   percentFilled: 0.9

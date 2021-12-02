@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class TriggerRingCollision : MonoBehaviour
 {
-	[SerializeField] private GameObject parentObject;
-	[SerializeField] private static int collisionNumber = 0;
-	
+	private bool hasCollided;
+	[Header("Spawn New Ring")]
+	[SerializeField] private GameObject ring;
+
+	//Event Triggered
+	[SerializeField] private static int collisionNumber = 0;	
 	public static event EventHandler<TriggerRingData> onRingTriggered;
 	public class TriggerRingData : EventArgs
 	{
@@ -14,11 +17,23 @@ public class TriggerRingCollision : MonoBehaviour
 
 	private void OnTriggerEnter(Collider collider)
 	{
-		if (collider.CompareTag("Player"))
+		if (collider.CompareTag("Player") && !hasCollided)
 		{
 			collisionNumber++;
 			onRingTriggered?.Invoke(this, new TriggerRingData { collisionNumber = collisionNumber });
-			Destroy(parentObject);
+
+			SpawnRing(ring);
+
+			Destroy(ring);
+			Destroy(gameObject);
+
+			hasCollided = true;
 		}
+	}
+
+	private void SpawnRing(GameObject ring)
+	{
+		GameObject spawnedRing = Instantiate(ring, Player.Instance.transform.position, Quaternion.identity);
+		spawnedRing.name = "Ring " + (collisionNumber + 1).ToString();
 	}
 }

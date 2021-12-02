@@ -30,21 +30,17 @@ public class TriggerRingAction : BaseClass
 
 	private void TriggerEvent(object sender, TriggerRingCollision.TriggerRingData e)
 	{
-		Debug.Log("Player Collided " + e.collisionNumber + " times!");
-
 		switch (e.collisionNumber)
 		{
-			case 1:
-				SpawnMonsterJumpscare(monster, Player.Instance.GetComponent<PlayerJumpscare>().jumpscareSpot, true);
-				break;
-				/*SpawnSound(appearance1);
+			case 1:				
+				SpawnSound(appearance1);
 				break;
 			case 2:
 				SpawnSound(appearance2);
 				break;
 			case 3:
-				SpawnMonsterJumpscare(monster);
-				break;*/
+				SpawnMonsterJumpscare(monster, Player.Instance.GetComponent<PlayerJumpscare>().jumpscareSpot, true);
+				break;
 		}
 	}
 
