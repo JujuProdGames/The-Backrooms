@@ -222,6 +222,9 @@ MonoBehaviour:
     m_Bits: 64
   turnSpeed: 30
   cameraShakeAmount: {x: 0.03, y: 0.03, z: 0.03}
+  transitionTime: 2.15
+  loadScenes: {fileID: 11400000, guid: 54e32c2d4a3256b459ac87f74c565c87, type: 2}
+  unloadScenes: {fileID: 11400000, guid: c7e302775fe858a4f820cd5a76b83798, type: 2}
 --- !u!1 &7621599938053570317
 GameObject:
   m_ObjectHideFlags: 0

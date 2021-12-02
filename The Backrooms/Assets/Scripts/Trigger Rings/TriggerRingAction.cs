@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class TriggerRingAction : BaseClass
-{
+{	
 	[Header("Spawn Audio")]
 	[Range(10, 40)]
 	[SerializeField] private float spawnRadius = 20f;

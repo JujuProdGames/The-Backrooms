@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using System;
 using UnityEngine;
 using DitzeGames.Effects;
@@ -13,6 +14,11 @@ public class PlayerJumpscare : BaseClass
 	[SerializeField] private float turnSpeed;
 	[SerializeField] private Vector3 cameraShakeAmount = new Vector3(.25f, .25f, .25f);
 	public event EventHandler onJumpscare;
+
+	[Header("Transition")]
+	[Range(0.5f, 3f)]
+	[SerializeField] private float transitionTime = 1f;
+	[SerializeField] private SceneCollection loadScenes, unloadScenes;
 	#region Subscribe + Unsubscribe
 	private void OnEnable()
 	{
@@ -33,6 +39,7 @@ public class PlayerJumpscare : BaseClass
 
 	private void Update()
 	{
+		//Check if we can jumpscare
 		if (Monster.Instance == null) return;
 		if (!queueJumpscare) return;
 
@@ -59,10 +66,31 @@ public class PlayerJumpscare : BaseClass
 
 		//rotate us over time according to speed until we are in the required rotation
 		transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * turnSpeed);
+
+		//rotate camera x rotation
+		Vector3 currentRotation = playerCam.transform.localEulerAngles;
+		currentRotation.x = Mathf.SmoothStep(0, playerCam.transform.localEulerAngles.y, turnSpeed/8);
+		playerCam.transform.localEulerAngles = currentRotation;
 		#endregion
 
 		#region Effects
 		CameraShake.ShakeOnce(1, 10, cameraShakeAmount, playerCam, true);
 		#endregion
+		if (transitionTime > 0)
+			transitionTime -= Time.deltaTime;
+		else
+			Transition();
+	}
+
+	private void Transition()
+	{
+		foreach (SceneField scene in loadScenes.loadScenes)
+		{
+			SceneManager.LoadScene(scene.SceneName, LoadSceneMode.Additive);
+		}
+		foreach (SceneField scene in unloadScenes.loadScenes)
+		{
+			SceneManager.UnloadSceneAsync(scene.SceneName);
+		}
 	}
 }

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class TriggerRingCollision : MonoBehaviour
 {
+	[Range(0, 8)]
+	[SerializeField] private static float maxRings = 3;
+
 	private bool hasCollided;
 	[Header("Spawn New Ring")]
 	[SerializeField] private GameObject ring;
@@ -17,9 +20,10 @@ public class TriggerRingCollision : MonoBehaviour
 
 	private void OnTriggerEnter(Collider collider)
 	{
-		if (collider.CompareTag("Player") && !hasCollided)
-		{
+		if (collider.CompareTag("Player") && !hasCollided && collisionNumber < maxRings)
+		{			
 			collisionNumber++;
+
 			onRingTriggered?.Invoke(this, new TriggerRingData { collisionNumber = collisionNumber });
 
 			SpawnRing(ring);
