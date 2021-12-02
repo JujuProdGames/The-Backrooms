@@ -57,12 +57,20 @@ public class TriggerRingAction : BaseClass
 		soundObject.GetComponent<AudioSource>().Play();
 	}
 
+	static GameObject jumpscare;
+	public static Vector3 monsterPos
+	{
+		get
+		{
+			return jumpscare.GetComponent<Monster>().face.transform.position;
+		}
+	}
 	private void SpawnMonsterJumpscare(GameObject monster, Transform jumpscareSpot, bool unparentObject = false)
 	{
-		GameObject jumpscare = Instantiate(monster, jumpscareSpot.position, jumpscareSpot.rotation, jumpscareSpot);
+		jumpscare = Instantiate(monster, jumpscareSpot.position, jumpscareSpot.rotation, jumpscareSpot);
 		
-		if(unparentObject) jumpscare.transform.parent = null;
-		
+		if(unparentObject) jumpscare.transform.parent = null;		
+
 		onJumpscareIdle(this, new OnJumpscareIdleArgs {monsterPos = jumpscare.transform.position});
 	}
 }

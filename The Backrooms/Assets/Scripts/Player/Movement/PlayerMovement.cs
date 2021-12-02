@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -76,6 +75,27 @@ public class PlayerMovement : BaseClass
 		}
 	}
 
+	#region Jumpscare
+	#region Subscribe
+	private void OnEnable()
+	{
+		GetComponent<PlayerJumpscare>().onJumpscare += JumpscareTriggered;
+	}
+
+	private void OnDisable()
+	{
+		GetComponent<PlayerJumpscare>().onJumpscare -= JumpscareTriggered;
+	}
+	#endregion
+
+	#region Jumpscare Action
+	private bool jumpscareTriggered = false;
+	private void JumpscareTriggered(object sender, EventArgs e)
+	{
+		jumpscareTriggered = true;
+	}
+	#endregion
+	#endregion
 
 	private void Start()
 	{
@@ -89,11 +109,13 @@ public class PlayerMovement : BaseClass
 	{
 		StickToGround();
 
+		CalculateGravity();
+
+		if (jumpscareTriggered) return;
+
 		Move();
 
 		if (Input.GetButtonDown("Jump") && isGrounded) Jump();
-
-		CalculateGravity();
 	}
 
 	private void CalculateGravity()

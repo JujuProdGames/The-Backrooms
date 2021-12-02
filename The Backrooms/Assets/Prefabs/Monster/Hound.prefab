@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4340672644676855522}
   - component: {fileID: 2006878703042744872}
   - component: {fileID: 5082704134355171572}
+  - component: {fileID: 4449657972186209506}
   m_Layer: 6
   m_Name: Hound
   m_TagString: Monster
@@ -38,6 +39,7 @@ Transform:
   - {fileID: 6836965556956117540}
   - {fileID: 8354043315705734278}
   - {fileID: 7766565471280990665}
+  - {fileID: 7225109670563903614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,6 +105,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a46a30ec0ff8bc4c8a192efa6f16a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4449657972186209506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61117436640326653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3665f42d23aedb44b28dff962b434d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  face: {fileID: 7225109670563903614}
 --- !u!1 &906928350296263652
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +327,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 17, z: 5}
+  m_Size: {x: 5, y: 10, z: 5}
   m_Center: {x: 0, y: -6, z: -2.85}
 --- !u!1 &2284186431967957017
 GameObject:
@@ -563,6 +578,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2697714470893198810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7225109670563903614}
+  m_Layer: 6
+  m_Name: Face
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7225109670563903614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697714470893198810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 833994209168402759}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3057022690056897348
 GameObject:
   m_ObjectHideFlags: 0

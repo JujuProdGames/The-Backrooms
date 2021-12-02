@@ -279,3 +279,10 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Monster Jumpscare
+    mixer: {fileID: 24300002, guid: 1470809cfa6d9864e9afc19b77920e73, type: 2}
+    clip: {fileID: 8300000, guid: ef9fa890e1b46394d87ab968e4f4eba5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}

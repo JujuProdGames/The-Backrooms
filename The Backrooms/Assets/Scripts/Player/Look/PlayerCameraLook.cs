@@ -83,7 +83,15 @@ public class PlayerCameraLook : BaseClass
 	void Update()
 	{
 		#region Jumpscare Trigger
-		if (jumpscareTriggered) return;
+		if (jumpscareTriggered)
+		{
+			transform.localPosition = new Vector3(
+			transform.localPosition.x,
+			startYPos,
+			transform.localPosition.z);
+
+			return;
+		}
 		#endregion
 
 		Look();

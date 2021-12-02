@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1256292359013242122}
   m_Layer: 3
   m_Name: tile_lvl0_Hall
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1871855058fe1ee48831b7f32f16f9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
   neighboringTile: {fileID: 0}
   tileData: {fileID: 11400000, guid: b30bbe60135693043b1d2606cd387890, type: 2}
   connectionPoints: []

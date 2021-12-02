@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
@@ -12,6 +13,19 @@ public class PlayerSound : MonoBehaviour
     private float stepCoolDown;
     [Range(1.25f, 2.25f)]
     [SerializeField] private float runRateMultiplier = 1.75f;
+
+    #region Subscribe
+    private void OnEnable()
+    {
+        GetComponent<PlayerJumpscare>().onJumpscare += PlayJumpscareSound;
+    }
+
+    private void OnDisable()
+    {
+        GetComponent<PlayerJumpscare>().onJumpscare -= PlayJumpscareSound;
+    }
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +40,8 @@ public class PlayerSound : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+        if (FindObjectOfType<AudioManager>() == null) return;
+        if (playJumpscareSound) return;
         #region Footsteps
         stepCoolDown -= Time.deltaTime;
         stepCoolDown = Mathf.Clamp(stepCoolDown, -1, Mathf.Infinity);
@@ -64,5 +80,15 @@ public class PlayerSound : MonoBehaviour
         if (!pm.hasStamina && !am.IsPlaying("Player Exhausted")) am.PlayOneShot("Player Exhausted");
         else if(pm.hasStamina && am.IsPlaying("Player Exhausted")) am.Stop("Player Exhausted");
         #endregion
+    }
+
+    bool playJumpscareSound;
+    private void PlayJumpscareSound(object sender, EventArgs e)
+	{
+        if (!playJumpscareSound)
+        {
+            FindObjectOfType<AudioManager>().PlayOneShot("Monster Jumpscare");
+            playJumpscareSound = true;
+        }
     }
 }

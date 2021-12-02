@@ -1,45 +1,46 @@
 using System;
 using UnityEngine;
+using DitzeGames.Effects;
 
 public class PlayerJumpscare : BaseClass
 {
 	[Header("Detecting Jumpscare")]
-    [HideInInspector] public Transform jumpscareSpot;
+	[HideInInspector] public Transform jumpscareSpot;
 	[SerializeField] private Camera playerCam;
 	[SerializeField] private LayerMask monsterLayer;
 
 	[Header("spoop")]
 	[SerializeField] private float turnSpeed;
+	[SerializeField] private Vector3 cameraShakeAmount = new Vector3(.25f, .25f, .25f);
 	public event EventHandler onJumpscare;
 	#region Subscribe + Unsubscribe
 	private void OnEnable()
 	{
-		TriggerRingAction.onJumpscareIdle += CheckForJumpscare;
-	}										 
-											 
-	private void OnDisable()				 
-	{										 
-		TriggerRingAction.onJumpscareIdle -= CheckForJumpscare;
+		TriggerRingAction.onJumpscareIdle += QueueJumpscare;
+	}
+
+	private void OnDisable()
+	{
+		TriggerRingAction.onJumpscareIdle -= QueueJumpscare;
 	}
 	#endregion
 
-	private bool checkForJumpscare = false;
-	private Vector3 monsterPos;
-	private void CheckForJumpscare(object sender, TriggerRingAction.OnJumpscareIdleArgs e)
+	private bool queueJumpscare = false;
+	private void QueueJumpscare(object sender, TriggerRingAction.OnJumpscareIdleArgs e)
 	{
-		checkForJumpscare = true;
-		monsterPos = e.monsterPos;
+		queueJumpscare = true;
 	}
 
 	private void Update()
-	{		
-		if (!checkForJumpscare) return;
+	{
+		if (Monster.Instance == null) return;
+		if (!queueJumpscare) return;
 
 		//Debug.Log(Mathf.Abs(startYCameraPos - Player.Instance.transform.localEulerAngles.y));
 		//If Player Looks at Monster (close enough)... BOO!
 		if (!Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, Mathf.Infinity, monsterLayer)) return;
 
-		Jumpscare(monsterPos);
+		Jumpscare(TriggerRingAction.monsterPos);
 	}
 
 	private void Jumpscare(Vector3 monsterPos)
@@ -47,6 +48,7 @@ public class PlayerJumpscare : BaseClass
 		Debug.Log("Jumpscare!");
 		onJumpscare(this, EventArgs.Empty);
 
+		#region Cam Anim
 		//https://answers.unity.com/questions/254130/how-do-i-rotate-an-object-towards-a-vector3-point.html
 
 		//find the vector pointing from our position to the target
@@ -57,5 +59,10 @@ public class PlayerJumpscare : BaseClass
 
 		//rotate us over time according to speed until we are in the required rotation
 		transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * turnSpeed);
+		#endregion
+
+		#region Effects
+		CameraShake.ShakeOnce(1, 10, cameraShakeAmount, playerCam, true);
+		#endregion
 	}
 }

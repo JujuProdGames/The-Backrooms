@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3295178432722152970}
   m_LocalRotation: {x: -0.50347847, y: 0.4964972, z: 0.4964972, w: 0.50347847}
-  m_LocalPosition: {x: 0, y: 1.06, z: -2.69}
+  m_LocalPosition: {x: 0, y: 1.25, z: -2.5}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -130,7 +130,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -220,7 +220,8 @@ MonoBehaviour:
   monsterLayer:
     serializedVersion: 2
     m_Bits: 64
-  turnSpeed: 15
+  turnSpeed: 30
+  cameraShakeAmount: {x: 0.03, y: 0.03, z: 0.03}
 --- !u!1 &7621599938053570317
 GameObject:
   m_ObjectHideFlags: 0
