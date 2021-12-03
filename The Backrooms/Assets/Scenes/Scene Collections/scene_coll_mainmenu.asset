@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a2749108f275a64eb8267f3d53b01b2, type: 3}
-  m_Name: scene_coll_win
+  m_Name: scene_coll_mainmenu
   m_EditorClassIdentifier: 
   loadScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: eaefdbd1f9f5af642a8d6dba6a247213, type: 3}
-    m_SceneName: scene_end_graphics
+  - m_SceneAsset: {fileID: 102900000, guid: a142c3acabea41c45a8751ad370a7b78, type: 3}
+    m_SceneName: scene_mainmenu_ui
+  - m_SceneAsset: {fileID: 102900000, guid: d521e360853dd16439edf05a3e064c59, type: 3}
+    m_SceneName: scene_mainmenu_graphics
   setActiveScene:
-    m_SceneAsset: {fileID: 102900000, guid: eaefdbd1f9f5af642a8d6dba6a247213, type: 3}
-    m_SceneName: scene_end_graphics
+    m_SceneAsset: {fileID: 102900000, guid: d521e360853dd16439edf05a3e064c59, type: 3}
+    m_SceneName: scene_mainmenu_graphics

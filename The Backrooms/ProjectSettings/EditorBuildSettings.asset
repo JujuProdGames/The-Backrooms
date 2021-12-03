@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Scenes/scene_base.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Scenes/Main Menu/scene_mainmenu_ui.unity
+    guid: a142c3acabea41c45a8751ad370a7b78
+  - enabled: 1
+    path: Assets/Scenes/Scenes/Main Menu/scene_mainmenu_graphics.unity
+    guid: d521e360853dd16439edf05a3e064c59
+  - enabled: 1
     path: Assets/Scenes/Scenes/Terrain Generation/scene_ter_tiles.unity
     guid: c5201a2df7cebf140b09d3c7f410d368
   - enabled: 1

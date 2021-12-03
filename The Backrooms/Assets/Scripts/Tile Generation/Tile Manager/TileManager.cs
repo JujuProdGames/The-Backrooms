@@ -24,7 +24,6 @@ public class TileManager : TileClass
 			//2. Add Positions Based On Tiles
 			foreach(TileWorld tile in worldTiles)
 			{
-				//Vector3 convertedTilePos = new Vector3(tile.transform.position.x, tile.transform.position.z, 0);
 				worldTilePos.Add(tile.transform.position);
 			}
 
@@ -42,7 +41,7 @@ public class TileManager : TileClass
 			//2. Get All Active Tiles w/ Connection Points
 			foreach (TileWorld tile in worldTiles)
 			{
-				if (tile.gameObject.activeInHierarchy && tile.connectionPoints.Count > 0)
+				if (tile.connectionPoints.Count > 0)
 				{
 					foreach(Transform connectPoint in tile.connectionPoints)
 					{

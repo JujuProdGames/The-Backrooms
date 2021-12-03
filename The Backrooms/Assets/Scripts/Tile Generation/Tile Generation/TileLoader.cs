@@ -108,9 +108,7 @@ public class TileLoader : TileClass
 		}
 		#endregion
 
-		#region Generate		
-		Debug.Log(tilesInRange.Count);
-		Debug.Log(tilesAroundPlayer);
+		#region Generate				
 		//2. Spawn Tile if Number of Tiles around Player aren't Met
 		if (tilesInRange.Count <= tilesAroundPlayer)
 		{

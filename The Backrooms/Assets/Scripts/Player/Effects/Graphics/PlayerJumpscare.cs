@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using DitzeGames.Effects;
 
-public class PlayerJumpscare : BaseClass
+public class PlayerJumpscare : SceneClass
 {
 	[Header("Detecting Jumpscare")]
 	[HideInInspector] public Transform jumpscareSpot;
@@ -18,7 +18,7 @@ public class PlayerJumpscare : BaseClass
 	[Header("Transition")]
 	[Range(0.5f, 3f)]
 	[SerializeField] private float transitionTime = 1f;
-	[SerializeField] private SceneCollection loadScenes, unloadScenes;
+	[SerializeField] private SceneCollection sceneCollection;
 	#region Subscribe + Unsubscribe
 	private void OnEnable()
 	{
@@ -42,55 +42,45 @@ public class PlayerJumpscare : BaseClass
 		//Check if we can jumpscare
 		if (Monster.Instance == null) return;
 		if (!queueJumpscare) return;
-
-		//Debug.Log(Mathf.Abs(startYCameraPos - Player.Instance.transform.localEulerAngles.y));
-		//If Player Looks at Monster (close enough)... BOO!
 		if (!Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, Mathf.Infinity, monsterLayer)) return;
 
+		//Jumpscare Player
 		Jumpscare(TriggerRingAction.monsterPos);
 	}
 
 	private void Jumpscare(Vector3 monsterPos)
 	{
-		Debug.Log("Jumpscare!");
+		//Trigger Jumpscare Event
 		onJumpscare(this, EventArgs.Empty);
 
-		#region Cam Anim
-		//https://answers.unity.com/questions/254130/how-do-i-rotate-an-object-towards-a-vector3-point.html
-
-		//find the vector pointing from our position to the target
+		//Animate Camera - https://answers.unity.com/questions/254130/how-do-i-rotate-an-object-towards-a-vector3-point.html
 		Vector3 _direction = (monsterPos - transform.position).normalized;
 
-		//create the rotation we need to be in to look at the target
 		Quaternion _lookRotation = Quaternion.LookRotation(_direction);
 
-		//rotate us over time according to speed until we are in the required rotation
 		transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * turnSpeed);
 
-		//rotate camera x rotation
 		Vector3 currentRotation = playerCam.transform.localEulerAngles;
 		currentRotation.x = Mathf.SmoothStep(0, playerCam.transform.localEulerAngles.y, turnSpeed/8);
 		playerCam.transform.localEulerAngles = currentRotation;
-		#endregion
 
-		#region Effects
+		//Effects
 		CameraShake.ShakeOnce(1, 10, cameraShakeAmount, playerCam, true);
-		#endregion
+
+		//Transition
 		if (transitionTime > 0)
 			transitionTime -= Time.deltaTime;
 		else
 			Transition();
 	}
 
+	private bool switchScenes = false;
 	private void Transition()
 	{
-		foreach (SceneField scene in loadScenes.loadScenes)
-		{
-			SceneManager.LoadScene(scene.SceneName, LoadSceneMode.Additive);
-		}
-		foreach (SceneField scene in unloadScenes.loadScenes)
-		{
-			SceneManager.UnloadSceneAsync(scene.SceneName);
-		}
+		//Loads Scenes
+		if(!switchScenes)
+			LoadScenes(sceneCollection, sceneCollection.unloadScenes);
+
+		switchScenes = true;
 	}
 }
