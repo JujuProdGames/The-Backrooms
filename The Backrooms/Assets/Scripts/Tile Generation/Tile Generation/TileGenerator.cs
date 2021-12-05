@@ -15,10 +15,11 @@ public class TileGenerator : TileClass
 	}
 	#endregion
 
-	public void SpawnFirstTile()
+	public void SpawnFirstTile(TileData firstTile = null)
 	{
 		//Initial Spawn
-		SpawnTile(RandomTilePrefab(tileRate), null, new Vector3(0, 0, 0), RandomTileRotation());
+		if(firstTile == null) SpawnTile(RandomTilePrefab(tileRate), null, new Vector3(0, 0, 0), RandomTileRotation());
+		else SpawnTile(firstTile, null, new Vector3(0, 0, 0), RandomTileRotation());
 	}
 
 	private void SpawnTile(TileData tileToBeSpawned, TileWorld neighbouringTile, Vector3 position, Vector3 rotation)//ADD POSITION

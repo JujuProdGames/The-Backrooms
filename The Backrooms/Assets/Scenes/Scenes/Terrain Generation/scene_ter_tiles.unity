@@ -337,11 +337,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fc3ed3c6edc9e4d89d565a10054a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tg: {fileID: 1742753552}
+  firstTile: {fileID: 11400000, guid: f3c84ece3bbffc04d8557da1089a36ba, type: 2}
   tileMask:
     serializedVersion: 2
     m_Bits: 8
   tileDiameter: 6
-  initialTiles: 100
+  initialTiles: 2500
   timeBtwnSpawns: 0
   loadRadius: 50
   percentFilled: 0.9

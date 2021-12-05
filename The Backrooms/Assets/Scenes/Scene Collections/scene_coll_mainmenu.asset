@@ -17,6 +17,9 @@ MonoBehaviour:
     m_SceneName: scene_mainmenu_ui
   - m_SceneAsset: {fileID: 102900000, guid: d521e360853dd16439edf05a3e064c59, type: 3}
     m_SceneName: scene_mainmenu_graphics
+  - m_SceneAsset: {fileID: 102900000, guid: c5201a2df7cebf140b09d3c7f410d368, type: 3}
+    m_SceneName: scene_ter_tiles
+  unloadScenes: {fileID: 0}
   setActiveScene:
     m_SceneAsset: {fileID: 102900000, guid: d521e360853dd16439edf05a3e064c59, type: 3}
     m_SceneName: scene_mainmenu_graphics

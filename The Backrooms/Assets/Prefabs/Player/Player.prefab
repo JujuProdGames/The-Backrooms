@@ -407,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7621599937457866819}
   pm: {fileID: 628080906609515056}
-  sensitivity: 180
+  sensitivity: 100
   bobbingSpeed: 4
   bobbingAmount: 0.2
   bobRateMultiplier: 1.75

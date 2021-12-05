@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TileLoader : TileClass
 {
-	TileGenerator tg;
+	[SerializeField] private TileGenerator tg;
+	[SerializeField] private TileData firstTile;
 	List<TileWorld> tilesInRange
 	{
 		get
@@ -86,8 +87,7 @@ public class TileLoader : TileClass
 	{
 		comparePlayerRoom = currentPlayerRoom;
 
-		tg = TileGenerator.Instance;
-		tg.SpawnFirstTile();
+		tg.SpawnFirstTile(firstTile);
 	}
 
 	private void Update()

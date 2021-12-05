@@ -23,7 +23,9 @@ MonoBehaviour:
     m_SceneName: scene_env_sound
   - m_SceneAsset: {fileID: 102900000, guid: 2637d38949b81dd40aef90ce050037d2, type: 3}
     m_SceneName: scene_ter_triggerrings
-  unloadScenes: {fileID: 0}
+  - m_SceneAsset: {fileID: 102900000, guid: 1113e5ac08a7b2c47889c2083ae91df3, type: 3}
+    m_SceneName: scene_cutscene_start
+  unloadScenes: {fileID: 11400000, guid: d8198a24a8bd5b445a9ef38adbf78066, type: 2}
   setActiveScene:
     m_SceneAsset: {fileID: 102900000, guid: c5201a2df7cebf140b09d3c7f410d368, type: 3}
     m_SceneName: scene_ter_tiles
